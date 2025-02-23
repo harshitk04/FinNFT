@@ -12,6 +12,12 @@
   --clr-black: #202020;
   --clr-blue: #6C63FF;
   --clr-blue-2: #4c46b6;
+  --clr-white: #FFFFFF;
+  --clr-black: #121212;
+  --clr-dark-blue: #eef5ff;
+  --clr-deep-blue: #f5f7fc;
+  --clr-blue: #573ad8;
+  --clr-blue-2: #4c46b6;
 }
 
 body {
@@ -19,6 +25,9 @@ body {
   font-family: "Play";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--clr-dark-blue);
+  color: var(--clr-white);
+  font-family: "Play";
 }
 
 /* ------------------------------------------------------ */
@@ -28,6 +37,10 @@ nav {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
+  background: var(--clr-deep-blue);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 15px 20px;
+  
 }
 
 .nav__brand {
@@ -75,6 +88,7 @@ nav {
   justify-content: center;
   align-items: center;
 
+
   min-height: 600px;
 }
 
@@ -83,7 +97,10 @@ form {
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-
+  background-color: var(--clr-deep-blue);
+  padding: 30px;
+  border-radius: 6px;
+  box-shadow: 0px 4px 10px rgba(52, 100, 189, 0.3);
   margin: 0 25px
 }
 
@@ -170,3 +187,9 @@ p {
     flex-direction: column;
   }
 }
+
+/* 
+
+
+
+ */

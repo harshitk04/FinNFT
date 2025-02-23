@@ -81,7 +81,6 @@ function App() {
     const type = response.headers['content-type'];
     const uint8Array = new Uint8Array(response.data); // Convert to Uint8Array
   
-    // Convert binary data to Base64
     const base64data = btoa(
       uint8Array.reduce((data, byte) => data + String.fromCharCode(byte), "")
     );
@@ -89,26 +88,20 @@ function App() {
     const img = `data:${type};base64,` + base64data; // Create data URL
     setImage(img);
   
-    return response.data; // Return binary data for local storage
+    return response.data; 
   };
   
 
   const saveImageLocally = async (imageData) => {
     setMessage("Saving Image Locally...");
-
-    // Convert binary image data to a Blob
     const blob = new Blob([imageData], { type: "image/jpeg" });
-
-    // Create an object URL for the blob (acts as a local file reference)
     const localURL = URL.createObjectURL(blob);
-    setLocalImageURL(localURL); // Store locally generated URL
-
+    setLocalImageURL(localURL);
     return localURL;
   };
 
   const mintImage = async (imageURI) => {
     setMessage("Waiting for Mint...");
-
     const signer = await provider.getSigner();
     const transaction = await nft.connect(signer).mint(imageURI, { value: ethers.utils.parseUnits("1", "ether") });
     await transaction.wait();
@@ -145,9 +138,6 @@ function App() {
       {!isWaiting && localImageURL && (
         <p>
           View&nbsp;
-          <a href={localImageURL} target="_blank" rel="noreferrer">
-            Saved Image
-          </a>
         </p>
       )}
     </div>
